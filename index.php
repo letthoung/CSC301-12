@@ -12,7 +12,8 @@ $apartments = [
         "lifestyle-food" => "Almost Anything",
         "lifestyle-occupation" => "College Student",
         "flatmate-expectation" => "Age: 25 - 37 <br> Sex: Female <br> Smoking: Outside only <br> Students Only: No",
-        "price" => "$900"
+        "price" => "$900",
+        "phone-number" => "819-346-6698"
     ],
     [   
         "household-name" => "Omny",
@@ -26,7 +27,8 @@ $apartments = [
         "lifestyle-food" => "Almost Anything",
         "lifestyle-occupation" => "Amazon Warehouse Worker",
         "flatmate-expectation" => "Age: 0-100 <br> Sex: Female <br> Smoking: Anywhere <br> Students Only: No",
-        "price" => "$600"
+        "price" => "$600",
+        "phone-number" => "719-346-6699"
     ],
     [   
         "household-name" => "Hot-Rod",
@@ -40,7 +42,8 @@ $apartments = [
         "lifestyle-food" => "Allergic to Seafood",
         "lifestyle-occupation" => "Uber Driver",
         "flatmate-expectation" => "Age: 0 - 30 <br> Sex: Male or Female <br> Smoking: Outside only <br> Students Only: No",
-        "price" => "$700"
+        "price" => "$700",
+        "phone-number" => "819-346-6690"
     ],
     [   
         "household-name" => "Eric",
@@ -54,7 +57,8 @@ $apartments = [
         "lifestyle-food" => "Almost Anything",
         "lifestyle-occupation" => "Teacher",
         "flatmate-expectation" => "Age: 25 - 40 <br> Sex: Female <br> Smoking: Outside only <br> Students Only: Yes",
-        "price" => "$600"
+        "price" => "$600",
+        "phone-number" => "819-346-6691"
     ],
     [   
         "household-name" => "Lily",
@@ -68,7 +72,8 @@ $apartments = [
         "lifestyle-food" => "Allergic to Seafood",
         "lifestyle-occupation" => "College Student",
         "flatmate-expectation" => "Age: 22 - 30 <br> Sex: Male or Female <br> Smoking: No smoking <br> Students Only: No",
-        "price" => "$480"
+        "price" => "$480",
+        "phone-number" => "819-346-6693"
     ],
     [   
         "household-name" => "Danny",
@@ -82,7 +87,8 @@ $apartments = [
         "lifestyle-food" => "Almost Anything",
         "lifestyle-occupation" => "Rancher",
         "flatmate-expectation" => "Age: 23 - 32 <br> Sex: Male or Female <br> Smoking: Outside only <br> Students Only: No",
-        "price" => "$1,000"
+        "price" => "$1,000",
+        "phone-number" => "819-346-6695"
     ]
 ];
 
@@ -122,11 +128,10 @@ $apartments = [
                                    style="max-height: 50px; max-width: 50px;">
                                 <strong>'.$apartments[$i]['household-name'].'</strong>
                                 <br>
-                                <small>'.$apartments[$i]['occupation'].'</small>
+                                <small>'.$apartments[$i]['lifestyle-occupation'].'</small>
                                 <br>
                                 <small>'.$apartments[$i]['household-sex'].', '.$apartments[$i]['household-age']. ' years old'.'</small> 
                                 <hr class="small-margin-top">
-                               <!-- </div>-->
                             </div>
                         </div>
                         <hr class="my-4">
