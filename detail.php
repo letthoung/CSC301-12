@@ -29,37 +29,7 @@ if($_GET['id']<0 || $_GET['id']>count($apartments)-1){
     </head>
     <body>
         <div class="container">
-            <div class="row">
-                <div class="col-9">
-                    <h4>Description:</h4>
-                    <?= $apartments[$id]['description']?>
-                    <br><br>
-                    <div class="row">
-                        <div class="col-5">
-                            <h4>About household:</h4>
-                            <ul>
-                                <li>Cleanliness: <?= $apartments[$id]['lifestyle-cleanliness']?></li>
-                                <li>Food: <?= $apartments[$id]['lifestyle-food']?></li>
-                                <li>Bedtime: <?= $apartments[$id]['lifestyle-bedtime']?></li>
-                                <li>Price asking: <?= $apartments[$id]['price']?></li>
-                            </ul>
-                        </div>
-                        <div class="col-7">
-                            <img src="<?=$apartments[$id]['house-img']?>" alt="room-<?= $id ?>'" class="img-responsive" style="max-height: 400px; max-width: 400px;">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <img src="<?= $apartments[$id]['household-img'] ?>" alt="houshold-<?= $id ?>" class="img-responsive rounded-circle" style="max-height: 100px; max-width: 100px;">
-                    <strong><?= $apartments[$id]['household-name'] ?></strong>
-                    <br>
-                    <small><?= $apartments[$id]['lifestyle-occupation'] ?></small>
-                    <br>
-                    <small><?= $apartments[$id]['household-sex'].', '.$apartments[$id]['household-age']. ' years old' ?></small> 
-                    <hr class="small-margin-top">
-                    <p>Phone number: <?= $apartments[$id]['phone-number'] ?></p>    
-                </div>
-            </div>
+            <?php displayDetail($apartments, $id); ?>
         </div>
 
     <!-- Optional JavaScript -->
