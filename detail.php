@@ -1,7 +1,7 @@
 <?php
-include('functions.php');
+include('includes/functions.php');
 
-$apartments = jsonToArray('data.json');
+$apartments = jsonToArray('data/data.json');
 
 if(!isset($_GET['id'])){
 	echo 'Please visit our <a href="index.php">Home Page</a>.';

@@ -107,5 +107,4 @@ function displayPageFooter(){
     </html>';
 }
 
-
 ?>

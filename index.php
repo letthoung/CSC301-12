@@ -1,12 +1,27 @@
 <?php
-include('functions.php');
-$apartments = jsonToArray('data.json');
+session_start();
+include('includes/functions.php');
+include('includes/auth_functions.php');
+
+$apartments = jsonToArray('data/data.json');
 
 displayPageHeader('RoomsForRent');
 ?>
 
-<!-- Button to add a room for renting -->
-<a class="btn btn-primary btn-lg" href="create.php" role="button">Add Your Room For Renting</a>
+<div class="row">
+    <div class="col-md-8">
+        <a class="btn btn-primary btn-lg" href="src/signin.php" role="button">Sign In</a>
+        <a class="btn btn-primary btn-lg" href="src/signup.php" role="button">Sign Up</a>
+        <?php
+            if(is_logged('user/email'))
+                echo '<a class="btn btn-primary btn-lg" href="src/signout.php" role="button">Sign Out</a>';
+        ?>
+    </div>
+    <div class="col-md-4">
+        <!-- Button to add a room for renting -->
+        <a class="btn btn-primary btn-lg" href="create.php" role="button">Add Your Room For Renting</a>
+    </div>
+</div>
 <br><br>
 
 <!-- Show list of rooms available -->

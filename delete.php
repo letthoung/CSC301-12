@@ -1,8 +1,8 @@
 <?php
-require_once('functions.php');
-require_once('json.php');
+require_once('includes/functions.php');
+require_once('includes/json.php');
 
-$apartments = jsonToArray('data.json');
+$apartments = jsonToArray('data/data.json');
 
 displayPageHeader('Delete Room');
 
@@ -16,7 +16,7 @@ if($_GET['id']<0 || $_GET['id']>count($apartments)-1){
 }
     
 $id = $_GET['id'];
-deleteJSON('data.json', $id);
+deleteJSON('data/data.json', $id);
 echo 'Delete room successfully. Click <a href="index.php">here</a> to go back to home page.';
 
 displayPageFooter(); ?>
