@@ -27,7 +27,17 @@ function displayList($apartments, $i){
                 </div>
                 <hr class="my-4">
                 <p class="text-center">Price: '.$apartments[$i]['price'].'</p>
-                <a class="btn btn-primary btn-lg float-right" href="detail.php?id='.$i.'" role="button">View</a>
+                <div class="row">
+                    <div class="col-md-5">
+                        <a class="btn btn-primary btn-lg" href="detail.php?id='.$i.'" role="button">View</a>
+                    </div>
+                    <div class="col-md-5">
+                        <a class="btn btn-primary btn-lg" href="edit.php?id='.$i.'" role="button">Edit</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-danger btn-lg" href="delete.php?id='.$i.'" role="button">Delete</a>
+                    </div>
+                </div>
             </div>
         </li>';
 }
@@ -47,6 +57,8 @@ function displayDetail($apartments, $id){
                                 <li>Bedtime: '. $apartments[$id]['lifestyle-bedtime'] .'</li>
                                 <li>Price asking: '. $apartments[$id]['price'] .'</li>
                             </ul>
+                            <h4>Flatmate preference:</h4>
+                            <p> '. $apartments[$id]['flatmate-expectation'] .' </p>
                         </div>
                         <div class="col-7">
                             <img src="'. $apartments[$id]['house-img'] .'" alt="room-'. $id .'" class="img-responsive" style="max-height: 400px; max-width: 400px;">
@@ -65,4 +77,35 @@ function displayDetail($apartments, $id){
                 </div>
             </div>';
 }
+
+function displayPageHeader($title){
+
+    echo '<!doctype html>
+        <html lang="en">
+        <head>
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+            <title>'. $title .'</title>
+        </head>
+        <body>
+            <div class="container">';
+}
+
+function displayPageFooter(){
+    echo '</div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+    </html>';
+}
+
+
 ?>
