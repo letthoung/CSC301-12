@@ -1,11 +1,11 @@
 <?php
 session_start();
 require_once('../includes/functions.php');
-require_once('../includes/auth_functions.php');
-if(is_logged('user/email')) header('location: ../index.php');
+require_once('../includes/authentication.php');
+if($auth->is_logged('user/email')) header('location: ../index.php');
 
 if(count($_POST)>0){ // when user submits form:
-	$error=signup('../data/database.csv', 'banned.csv');
+	$error=$auth->signup();
   if(isset($error{0})) echo $error;
 } else {
 

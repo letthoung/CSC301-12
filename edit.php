@@ -7,7 +7,7 @@ $apartments = jsonToArray('data/data.json');
 displayPageHeader('Edit Room Info');
 
 if(count($_POST) > 0){
-    modifyJSON('data/data.json',$_POST,$_GET[id]);
+    Json.modifyJSON('data/data.json',$_POST,$_GET[id]);
     echo "Room is edited successfully. Come back to our <a href='index.php'>Home Page</a>.";
 } else {
     if(!isset($_GET['id'])){

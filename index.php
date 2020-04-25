@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('includes/functions.php');
-include('includes/auth_functions.php');
+include('includes/authentication.php');
 
 $apartments = jsonToArray('data/data.json');
 
@@ -13,7 +13,7 @@ displayPageHeader('RoomsForRent');
         <a class="btn btn-primary btn-lg" href="src/signin.php" role="button">Sign In</a>
         <a class="btn btn-primary btn-lg" href="src/signup.php" role="button">Sign Up</a>
         <?php
-            if(is_logged('user/email'))
+            if($auth->is_logged())
                 echo '<a class="btn btn-primary btn-lg" href="src/signout.php" role="button">Sign Out</a>';
         ?>
     </div>

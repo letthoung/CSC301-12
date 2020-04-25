@@ -1,10 +1,10 @@
 <?php
 session_start();
 require_once('../includes/functions.php');
-require_once('../includes/auth_functions.php');
+require_once('../includes/authentication.php');
 
 if(count($_POST)>0){ // when user submits form:
-	$error=signin('../data/database.csv','user/email');
+	$error=$auth->signin();
 	if(isset($error{0})) echo $error;
   else echo "Sign in successfully. Come back to our <a href='../index.php'>Home Page</a>.";
 } else {

@@ -16,7 +16,7 @@ if($_GET['id']<0 || $_GET['id']>count($apartments)-1){
 }
     
 $id = $_GET['id'];
-deleteJSON('data/data.json', $id);
+Json.deleteJSON('data/data.json', $id);
 echo 'Delete room successfully. Click <a href="index.php">here</a> to go back to home page.';
 
 displayPageFooter(); ?>
