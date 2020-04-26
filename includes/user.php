@@ -3,6 +3,7 @@ class User {
     public $id;
     public $name;
     public $email;
+    public $age;
     public $password;
     public $roomsForRent;
     public $sex;
@@ -13,10 +14,11 @@ class User {
     public $bedtime;
     public $food;
 
-    public function __construct($id, $name, $email, $password, $roomsForRent, $sex, $profilePicture, $phoneNumber, $flatmateExpectation, $cleanliness, $bedtime, $food) {
+    public function __construct($id, $name, $email, $age, $password, $roomsForRent, $sex, $profilePicture, $phoneNumber, $flatmateExpectation, $cleanliness, $bedtime, $food) {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
+        $this->age = $age;
         $this->password = $password;
         $this->roomsForRent = $roomsForRent;
         $this->sex = $sex;

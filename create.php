@@ -1,16 +1,18 @@
 <?php
 require_once('includes/functions.php');
-require_once('includes/json.php');
+require_once('includes/database.php');
+require_once('includes/authentication.php');
 displayPageHeader('Add Room for Renting');
 
 if(count($_POST) > 0){
-    $content = Json.readJSON('data/data.json');
-    array_push($content, $_POST); // Add to the front of the array
-    Json.writeJSON('data/data.json',$content);
+    $database->addRoom($_POST);
     echo 'Your room is added successfully to our listing. 
     Click <a href="index.php"> here </a> to go back to homepage';
 } else {
-    include('includes/create_template.php');
+    if (is_logged())
+        include('includes/create_template.php');
+    else
+        echo 'Please sign in before creating! <a href="src/signin.php"> Sign In </a>';
 }
 
 displayPageFooter(); ?>

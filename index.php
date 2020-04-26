@@ -2,8 +2,7 @@
 session_start();
 include('includes/functions.php');
 include('includes/authentication.php');
-
-$apartments = jsonToArray('data/data.json');
+include('includes/database.php');
 
 displayPageHeader('RoomsForRent');
 ?>
@@ -13,7 +12,7 @@ displayPageHeader('RoomsForRent');
         <a class="btn btn-primary btn-lg" href="src/signin.php" role="button">Sign In</a>
         <a class="btn btn-primary btn-lg" href="src/signup.php" role="button">Sign Up</a>
         <?php
-            if($auth->is_logged())
+            if(is_logged())
                 echo '<a class="btn btn-primary btn-lg" href="src/signout.php" role="button">Sign Out</a>';
         ?>
     </div>
@@ -29,9 +28,12 @@ displayPageHeader('RoomsForRent');
 <ul class="list-group">
     
     <?php
-    $count = count($apartments);
+    $ids = $database->getAllRoomIds();
+    $count = count($ids);
     for($i=0; $i<$count; ++$i){
-        displayList($apartments, $i);
+        $room = $database->getRoomInfo($ids[$i]);
+	    $owner = $database->getUserInfo($room->postedBy);
+        displayList($room, $owner);
     }
     ?>            
 </ul>
