@@ -90,6 +90,35 @@ Class Database {
             return $arr;
         }
     }
+
+    public function createUser($data,$id){
+        $sql = 'INSERT INTO users (name,email,password,roomsForRent,age,sex,userLevel,';
+		$sql .= 'profilePicture,phoneNumber,flatmateExpectation,cleanliness,bedtime,food)';
+		$sql .= ' VALUES ("'.$data['name'].'","'.$data['email'].'","'.$data['password'];
+		$sql .= '","",'.$data['household-age'].',"'.$data['household-sex'];
+        $sql .= '",'.$data['userLevel'].',"'.$data['household-img'];
+        $sql .= '","'.$data['phone-number'];
+		$sql .= '","'.$data['flatmate-expectation'].'","'.$data['lifestyle-cleanliness'];
+        $sql .= '","'.$data['lifestyle-bedtime'].'","'.$data['lifestyle-food'].'")';
+        $result = mysqli_query($this->conn,$sql);
+        if (!$result) {
+            echo "Error: " . $sql . "<br>" . mysqli_error($this->conn);
+            die();
+        }
+    }
+
+    public function editUser($data,$id){
+        // encrypt password
+        $data['password']=password_hash($data['password'], PASSWORD_DEFAULT);
+        
+        $sql = 'UPDATE users SET name = "'.$data['name'].'", email = "'.$data['email'].'", password = "'.$data['password'].'", age = '.$data['household-age'].', sex = "'.$data['household-sex'].'", userLevel = '.$data['userLevel'].', profilePicture = "'.$data['household-img'].'", phoneNumber = "'.$data['phone-number'].'", flatmateExpectation = "'.$data['flatmate-expectation'].'", cleanliness = "'.$data['lifestyle-cleanliness'].'", bedtime = "'.$data['lifestyle-bedtime'].'", food = "'.$data['lifestyle-food'].'" WHERE id = '.$id;
+
+        $result = mysqli_query($this->conn,$sql);
+        if (!$result) {
+            echo "Error: " . $sql . "<br>" . mysqli_error($this->conn);
+            die();
+        }
+    }
 }
 
 $database = new Database($conn);

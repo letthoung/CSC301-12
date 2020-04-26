@@ -6,7 +6,7 @@ function is_logged(){
 }
 
 function is_admin(){
-	return $_SESSION['adminLevel'] == 3;
+	return $_SESSION['userLevel'] == 3;
 }
 
 function signout(){
@@ -56,7 +56,7 @@ function signin(){
 			$row = mysqli_fetch_assoc($result);
 			if (password_verify($_POST['password'], $row['password'])) {
 				$_SESSION['userID']=$row['id'];
-				$_SESSION['adminLevel']=$row['adminLevel'];
+				$_SESSION['userLevel']=$row['userLevel'];
 				return '';
 			}
 		}
@@ -108,11 +108,11 @@ function signup(){
 		// encrypt password
 		$_POST['password']=password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-		$sql = 'INSERT INTO users (name,email,password,roomsForRent,age,sex,';
+		$sql = 'INSERT INTO users (name,email,password,roomsForRent,age,sex,userLevel,';
 		$sql .= 'profilePicture,phoneNumber,flatmateExpectation,cleanliness,bedtime,food)';
 		$sql .= ' VALUES ("'.$_POST['name'].'","'.$_POST['email'].'","'.$_POST['password'];
-		$sql .= '","",'.$_POST['household-age'].',"'.$_POST['household-sex'];
-		$sql .= '","'.$_POST['household-img'].'","'.$_POST['phone-number'];
+		$sql .= '","",'.$_POST['household-age'].',"'.$_POST['household-sex'].'",1';
+		$sql .= ',"'.$_POST['household-img'].'","'.$_POST['phone-number'];
 		$sql .= '","'.$_POST['flatmate-expectation'].'","'.$_POST['lifestyle-cleanliness'];
 		$sql .= '","'.$_POST['lifestyle-bedtime'].'","'.$_POST['lifestyle-food'].'")';
 		
