@@ -8,6 +8,17 @@ Class Database {
     public function __construct($conn) {
         $this->conn = $conn;
     }
+
+    public function is_postOwner($id) {
+        $sql = 'SELECT postedBy FROM rooms WHERE id = '.$id;
+        $result = mysqli_query($this->conn,$sql);
+        if (!$result){
+            echo "Error: " . $sql . "<br> Failed to add" . mysqli_error($this->conn);
+            die();
+        }
+        $row = mysqli_fetch_assoc($result);
+        return $_SESSION['userID'] == $row['postedBy'];
+    }
 	
 	public function addRoom($data){ 
         $sql = 'INSERT INTO rooms (description, picture, price, postedBy)';

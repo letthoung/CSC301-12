@@ -5,6 +5,10 @@ function is_logged(){
 	return isset($_SESSION['userID']);
 }
 
+function is_manager(){
+	return $_SESSION['userLevel'] == 2;
+}
+
 function is_admin(){
 	return $_SESSION['userLevel'] == 3;
 }
@@ -12,7 +16,6 @@ function is_admin(){
 function signout(){
 	if(!isset($_SESSION['userID'])) header('location: index.php');
 	session_start();
-	$_SESSION=[];
 	session_destroy();
 	header('location: signin.php');
 }
