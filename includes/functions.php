@@ -25,18 +25,37 @@ function displayList($room, $owner){
                 </div>
                 <hr class="my-4">
                 <p class="text-center">Price: '.$room->price.'</p>
-                <div class="row">
-                    <div class="col-md-5">
+                <div class="row">';
+    if (is_logged()) {
+        echo '<div class="col-md-3">
+                    <button class="btn btn-primary btn-lg" onclick="triggerLike('.$room->id.')">
+                        <i class="far fa-thumbs-up" style="font-size: 1.2em;"></i>
+                    </button> <div id="likeCount-'.$room->id.'">('.$room->likeCount.' Likes)</div>
+                    </div>
+                    <div class="col-md-4">
                         <a class="btn btn-primary btn-lg" href="detail.php?id='.$room->id.'" role="button">View</a>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <a class="btn btn-primary btn-lg" href="edit.php?id='.$room->id.'" role="button">Edit</a>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <a class="btn btn-danger btn-lg" href="delete.php?id='.$room->id.'" role="button">Delete</a>
                     </div>
-                </div>
-            </div>
+                </div>';
+    } else {
+        echo '<div class="col-md-5">
+                        <a class="btn btn-primary btn-lg" href="detail.php?id='.$room->id.'" role="button">View</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn btn-primary btn-lg" href="edit.php?id='.$room->id.'" role="button">Edit</a>
+                    </div>
+                    <div class="col-md-1">
+                        <a class="btn btn-danger btn-lg" href="delete.php?id='.$room->id.'" role="button">Delete</a>
+                    </div>
+                </div>';
+    }
+    
+    echo '</div>
         </li>';
 }
 
@@ -85,7 +104,7 @@ function displayPageHeader($title){
 
             <!-- Bootstrap CSS -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
             <title>'. $title .'</title>
         </head>
         <body>

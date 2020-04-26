@@ -6,7 +6,18 @@ include('includes/database.php');
 
 displayPageHeader('RoomsForRent');
 ?>
-
+<script type="text/javascript">
+function triggerLike(id) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById(`likeCount-${id}`).innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET", "src/likeBtnClick.php?id="+id, true);
+    xmlhttp.send();
+}
+</script>
 <div class="row">
     <div class="col-md-9">
         <a class="btn btn-primary btn-lg" href="src/signin.php" role="button">Sign In</a>

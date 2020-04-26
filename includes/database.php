@@ -21,9 +21,9 @@ Class Database {
     }
 	
 	public function addRoom($data){ 
-        $sql = 'INSERT INTO rooms (description, picture, price, postedBy)';
+        $sql = 'INSERT INTO rooms (description, picture, price, postedBy, likeCount)';
         $sql .= ' VALUES ("'. $data['description'] . '","' . $data['house-img'];
-        $sql .= '","' . $data['price'] . '",' . $_SESSION['userID'] . ')';
+        $sql .= '","' . $data['price'] . '",' . $_SESSION['userID'] . ',0)';
         $result = mysqli_query($this->conn,$sql);
         if (!$result)
             echo "Error: " . $sql . "<br> Failed to add" . mysqli_error($this->conn);
@@ -52,7 +52,7 @@ Class Database {
         } else {
             $row = mysqli_fetch_assoc($result);
             $room = new Room($row['id'], $row['description'], $row['picture'], 
-            $row['price'], $row['postedBy']);
+            $row['price'], $row['postedBy'], $row['likeCount']);
             return $room;
         }
     }
@@ -77,6 +77,24 @@ Class Database {
             echo "Error: " . $sql . "<br> Failed to edit Room " . mysqli_error($this->conn);
             return '';
         }  
+    }
+    
+    public function incrementLike($id){
+        $sql = 'UPDATE rooms SET likeCount = likeCount + 1 WHERE id = '. $id;
+        $result = mysqli_query($this->conn,$sql);
+        if (!$result) {
+            echo "Error: " . $sql . "<br> Failed to edit Room " . mysqli_error($this->conn);
+            return '';
+        }
+        
+        $sql = 'SELECT likeCount FROM rooms WHERE id = '. $id;
+        $result = mysqli_query($this->conn,$sql);
+        if (!$result) {
+            echo "Error: " . $sql . "<br> Failed to edit Room " . mysqli_error($this->conn);
+            return '';
+        }
+        $row = mysqli_fetch_assoc($result);
+        return $row['likeCount'];
 	}
 	
 	public function deleteRoom($id){
