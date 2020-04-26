@@ -14,9 +14,22 @@ Class Database {
         $sql .= ' VALUES ("'. $data['description'] . '","' . $data['house-img'];
         $sql .= '","' . $data['price'] . '",' . $_SESSION['userID'] . ')';
         $result = mysqli_query($this->conn,$sql);
-
         if (!$result)
             echo "Error: " . $sql . "<br> Failed to add" . mysqli_error($this->conn);
+
+        // Get user's roomsForRent string
+        $sql = 'SELECT roomsForRent FROM users WHERE id = '. $_SESSION['userID'];
+        $result = mysqli_query($this->conn,$sql);
+        if (!$result)
+            echo "Error: " . $sql . "<br>" . mysqli_error($this->conn);
+        $row = mysqli_fetch_assoc($result);
+        
+        // Add the room to users.roomsForRent
+        $sql = 'UPDATE users SET roomsForRent = CONCAT("' . $row['roomsForRent'];
+        $sql .= '",LAST_INSERT_ID(),";") WHERE id = '. $_SESSION['userID'];
+        $result = mysqli_query($this->conn,$sql);
+        if (!$result)
+            echo "Error: " . $sql . "<br>" . mysqli_error($this->conn);
 	}
 	
 	public function getRoomInfo($id){

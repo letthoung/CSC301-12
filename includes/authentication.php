@@ -5,6 +5,10 @@ function is_logged(){
 	return isset($_SESSION['userID']);
 }
 
+function is_admin(){
+	return $_SESSION['adminLevel'] == 3;
+}
+
 function signout(){
 	if(!isset($_SESSION['userID'])) header('location: index.php');
 	session_start();
@@ -52,6 +56,7 @@ function signin(){
 			$row = mysqli_fetch_assoc($result);
 			if (password_verify($_POST['password'], $row['password'])) {
 				$_SESSION['userID']=$row['id'];
+				$_SESSION['adminLevel']=$row['adminLevel'];
 				return '';
 			}
 		}
